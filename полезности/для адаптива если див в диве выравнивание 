@@ -1,0 +1,7 @@
+transform: translate(-50%) !important;
+
+  position: absolute !important;
+
+  top: 77% !important;
+
+  left: 10% !important; 

@@ -1,0 +1,12 @@
+
+            <div class="heading"><!--start_content-->
+                <h1><?
+                    if (!empty($h1)){
+                      echo $h1;
+                    //$APPLICATION->ShowTitle(false);
+                  }else{
+                echo $uf_value['NAME'];
+                  }
+
+                ?></h1><!--end_content-->
+            </div>

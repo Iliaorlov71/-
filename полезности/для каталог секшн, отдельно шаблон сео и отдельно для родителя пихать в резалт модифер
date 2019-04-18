@@ -1,0 +1,19 @@
+<?
+$arFilter = Array('IBLOCK_ID'=>13, 'GLOBAL_ACTIVE'=>'Y', "ID" => $arResult["SECTION"]["ID"]);
+$db_list = CIBlockSection::GetList(array(), $arFilter, true, array("UF_H1TITLE", "UF_DESCRIPTION," ,"UF_KEYWORDS"));
+while($section = $db_list->GetNext())
+{
+$section2[]=$section;
+  }
+
+
+?>
+<?//print_r($section2);?>
+<?if(!empty($arResult["SECTION"]["IPROPERTY_VALUES"]["SECTION_META_TITLE"])){
+$APPLICATION->SetPageProperty("title",$arResult["SECTION"]["IPROPERTY_VALUES"]["SECTION_META_TITLE"]);};
+$APPLICATION->SetTitle($arResult["SECTION"]["IPROPERTY_VALUES"]["SECTION_META_TITLE"]);
+if(!empty($arResult["SECTION"]["IPROPERTY_VALUES"]["SECTION_META_DESCRIPTION"])){
+$APPLICATION->SetPageProperty("descriprion",$arResult["SECTION"]["IPROPERTY_VALUES"]["SECTION_META_DESCRIPTION"]);}
+if(!empty($arResult["SECTION"]["IPROPERTY_VALUES"]["SECTION_META_KEYWORDS"])){
+$APPLICATION->SetPageProperty("keywords",$arResult["SECTION"]["IPROPERTY_VALUES"]["SECTION_META_KEYWORDS"]);}?>
+

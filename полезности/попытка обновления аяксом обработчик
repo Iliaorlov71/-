@@ -1,0 +1,49 @@
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");?>
+
+<?
+   if(CModule::IncludeModule("iblock"))
+   {
+
+
+//ГЕТЛИСТ К КАТАЛОГАМ
+function upgrade(){
+
+
+
+  $arFilter = array('IBLOCK_ID' =>"16","DEPTH_LEVEL"=>"4",'<TIMESTAMP_X' => date($DB->DateFormatToPHP(FORMAT_DATETIME), time()-1200),);
+  $rsSect = CIBlockSection::GetList(Array("section"=>"section"), $arFilter, false, Array("NAME","CODE","AC","ID","UF_SEO_H1","DEPTH_LEVEL","TIMESTAMP_X"),Array("nTopCount"=>"5 "));
+ while ($arSect = $rsSect->GetNext())
+ {
+ $arRes[]=$arSect;
+ }
+//print_r($arRes);
+//echo count($arRes);
+
+$z['size'] = count($arRes);
+
+echo json_encode($z);
+
+//
+//ИЗМЕНЕНИЕ КАТАЛОГОВ С ВЛОЖЕННОСТЬю
+foreach($arRes as $id2){
+   if($id2["DEPTH_LEVEL"]=="4"){
+     if(!empty($id2["UF_SEO_H1"])){
+           $str = mb_strtolower($id2["UF_SEO_H1"]);
+     }else{
+       $str = mb_strtolower($id2["NAME"]);
+
+     }
+
+     $bs2 = new CIBlockSection;
+
+ $arFields2["IPROPERTY_TEMPLATES"] = array(
+       "SECTION_META_TITLE" =>"Купить ".$str." в секс-шопе с доставкой по Москве и России",
+   );
+
+   $bs2->Update($id2["ID"], $arFields2);
+  }
+}
+}
+}
+?>
+

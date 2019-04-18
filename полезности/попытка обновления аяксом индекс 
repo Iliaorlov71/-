@@ -1,0 +1,19 @@
+<?require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');?>
+<script>
+function upload(){
+$.ajax({
+    url: "test2.php",
+    dataType: 'json',
+    success: function(data){
+        var c = data.stop
+        $('.div').html(data.size);
+    }
+});
+};
+ upload();
+
+</script>
+<div class="div">
+
+</div>
+

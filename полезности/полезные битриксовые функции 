@@ -1,0 +1,85 @@
+	$obSection    = CIBlockSection::GetTreeList($arFilter);  
+карта сайта разделы из iblock
+
+
+<?
+	CModule::IncludeModule("iblock");
+
+	$IBLOCK_ID    = 1;
+	$arFilter    = Array(
+	      'IBLOCK_ID'=>$IBLOCK_ID,
+	      'ACTIVE'=>'Y'
+	      );
+	$obSection    = CIBlockSection::GetTreeList($arFilter);
+
+	while($arResult = $obSection->GetNext()){
+		for($i=0;$i<=($arResult['DEPTH_LEVEL']-2);$i++)
+				echo "";
+			echo '<li class="sdv-'.$i.'"><a  href="'.$arResult['SECTION_PAGE_URL'].'">'.$arResult['NAME'].'</a></li>';
+
+	}
+?>
+    
+
+
+
+она же в полном обьеме ===================================================================
+
+
+
+
+
+
+
+
+<div class="container clearfix" style="margin: 20px auto">
+
+<ul>
+	<li><a href="/o-magazine/">О магазине</a></li>
+	<li><a href="/instrukciya/">Инструкция</a></li>
+	<li><a href="/nashi-obekty/">Наши объекты</a></li>
+	<li><a href="/kak-zakazat/">Как заказать</a></li>
+	<li><a href="/dostavka/">Доставка</a></li>
+	<li><a href="/oplata/">Оплата</a></li>
+	<li><a href="/contact/">Контакты</a></li>
+    <li><a href="/catalog/">Каталог</a>
+    	
+		<ul>
+			<?$APPLICATION->IncludeComponent("bitrix:main.include", "",
+				array(
+					"AREA_FILE_SHOW" => "file",
+					"PATH" => "/sitemap/map.php",
+					"AREA_FILE_RECURSIVE" => "N",
+					"EDIT_MODE" => "php",
+				),
+				false,
+				array("HIDE_ICONS" => "Y")
+			);?>
+		</ul>	
+
+	</li>
+</ul>
+</div>
+<style type="text/css">
+	.sdv-1 {
+		margin-left: 20px;
+	} 
+	.sdv-2 {
+		margin-left: 40px;
+	}
+	.sdv-3 {
+		margin-left: 60px;
+	}
+	.sdv-4 {
+		margin-left: 80px;
+	}
+	.sdv-5 {
+		margin-left: 100px;
+	}
+</style>
+
+
+
+
+
+карта сайта целиком с разделами каталога ==================================================================================================================================

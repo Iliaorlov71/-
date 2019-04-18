@@ -1,0 +1,22 @@
+@-moz-document url-prefix() {
+ .forka {
+	 text-align: center;
+	display: inline-block;
+	margin-top: -15px;
+	 }
+
+	 .cp-3 {
+    margin: 0 auto;
+float: left;
+	 }
+
+	 .shklk {
+    margin: -10px auto 0 auto;
+}
+
+.forka .fa {
+    top: 30px !important;
+    left: -25px !important;
+}
+
+} */
