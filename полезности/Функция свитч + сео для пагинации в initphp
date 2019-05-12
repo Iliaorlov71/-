@@ -1,0 +1,155 @@
+AddEventHandler("main", "OnEpilog", "SetSeoData");
+//AddEventHandler("main", "OnEndBufferContent", "SEO_modifier");
+
+function SetSeoData()
+{
+  file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/_log.txt', __FUNCTION__.':'.time());
+  $aSEOData['title'] = '';
+    $aSEOData['descr'] = '';
+    $aSEOData['keywr'] = '';
+    $aSEOData['h1'] = '';
+
+    global $APPLICATION;
+    $dir = $APPLICATION->GetCurDir();
+    $uri = $APPLICATION->GetCurUri();
+
+    $m_title = $APPLICATION->GetTitle();
+
+  $breads =$APPLICATION->arAdditionalChain;
+  $breads = end($breads);
+    $sSEOUrl = $_SERVER['REQUEST_URI'];
+
+
+  switch ($sSEOUrl) {
+
+
+    case '/helpful/articles/sayding-dlya-sten-iz-gazobetona':
+        $aSEOData['title'] = 'Сайдинг для стен из газобетона | Компания Vinylon';
+        $aSEOData['descr'] = 'Сайдинг для стен из газобетона обеспечивает надежную тепло- и гидроизоляцию стен. Подробности о сайдинге читайте на сайте компании Vinylon в разделе «Статьи».';
+      break;
+
+
+    case '/helpful/articles/kakim-firmam-saydinga-stoit-doveryat':
+        $aSEOData['title'] = 'Каким маркам сайдинга стоит доверять | Компания Vinylon';
+        $aSEOData['descr'] = 'На сайте компании Vinylon вы можете узнать, каким фирмам по производству сайдинга стоит доверять. Более подробная информация представлена в разделе «Статьи».';
+      break;
+
+
+    case '/helpful/articles/sayding-blok-khaderevyannyy-i-vinilovyy-us-dostoinstva-i-otlichiya':
+        $aSEOData['title'] = 'Деревянный и виниловый сайдинг блок-хаус: достоинства и отличия | Компания Vinylon';
+        $aSEOData['descr'] = 'Деревянный и виниловый сайдинг блок-хаус широко используется в отделке зданий. Ознакомьтесь с отличиями материалов на сайте компании Vinylon в разделе «Статьи».';
+      break;
+
+
+    case '/helpful/articles/uteplenie-doma-saydingom':
+        $aSEOData['title'] = 'Утепление дома сайдингом | Компания Vinylon';
+        $aSEOData['descr'] = 'При утеплении дома сайдингом необходимо отдавать предпочтение материалам с минимальной, а лучше нулевой пожарной опасностью. Подробности читайте далее.';
+      break;
+
+
+    case '/helpful/articles/vidy-fasadnogo-saydinga':
+        $aSEOData['title'] = 'Виды фасадного сайдинга | Компания Vinylon';
+        $aSEOData['descr'] = 'На сайте компании Vinylon вы можете ознакомиться с разновидностями фасадного сайдинга. Любые интересующие вопросы задавайте консультантам по телефону, указанному на сайте.';
+      break;
+
+
+    case '/helpful/articles/sayding-pod-brevno':
+        $aSEOData['title'] = 'Сайдинг под бревно | Компания Vinylon';
+        $aSEOData['descr'] = 'Хотите обновить обшивку дома? Предлагаем выбрать для этого сайдинг под бревно. Металлическая обшивка выглядит ка настоящие деревянные бревна. Подробности читайте далее.';
+      break;
+
+
+    case '/helpful/articles/derevyannaya-vagonka-i-vinilovyy-sayding-chto-luchshe':
+        $aSEOData['title'] = 'Деревянная вагонка и виниловый сайдинг | Компания Vinylon';
+        $aSEOData['descr'] = 'Не знаете что выбрать: деревянную вагонку или виниловый сайдинг? В данной статье представлена информация об особенностях материалов. Подробности читайте в разделе «Статьи».';
+      break;
+
+
+    case '/helpful/articles/istoriya-saydinga':
+        $aSEOData['title'] = 'История сайдинга | Компания Vinylon';
+        $aSEOData['descr'] = 'Предлагаем ознакомиться с историей возникновения сайдинга на сайте компании Vinylon. Информация представлена в разделе «Статьи». Подробности читайте далее.';
+      break;
+
+
+    case '/helpful/articles/vinilovye-sofity-vinyl-on':
+        $aSEOData['title'] = 'Виниловые софиты Vinyl-On | Компания Vinylon';
+        $aSEOData['descr'] = 'Виниловые софиты Vinyl-On используются как элементы обшивки подкровельного пространства. Более подробная информация о материале представлены в разделе «Статьи».';
+      break;
+
+    case '/helpful/articles/preimushchestva-vinilovogo-saydinga': // это ЧПУ
+        $aSEOData['title'] = 'Преимущества винилового сайдинга | Компания Vinylon';
+        $aSEOData['descr'] = 'На сайте компании Vinylon вы можете ознакомиться с преимуществами винилового сайдинга. Информация представлена в разделе «Статьи». Подробности читайте далее.';
+      break;
+
+    case '/production/vodostochnaya-sistema/assortment-and-the-technical-characteristics/': // это ЧПУ
+        $aSEOData['descr'] = 'В каталоге компании Vinylon представлен большой выбор труб и элементов для водостока. Мы реализуем продукцию высокого качества. Консультация специалистов по телефону.';
+      break;
+
+    case '/production/vodostochnaya-sistema/assortment-and-the-technical-characteristics/scheme.php': // это ЧПУ
+        $aSEOData['descr'] = 'Ознакомьтесь составляющими элементами водостока из ПВХ на развернутой схеме. Гарантируем качество реализуемой продукции. Подробности уточняйте по телефону.';
+      break;
+
+    case '/production/siding/assortiment/': // это ЧПУ
+        $aSEOData['descr'] = 'Предлагаем ознакомиться с ассортиментом сайдинга компании Vinylon. Подробные характеристики материала указаны на сайте. Более подробная информация доступна по телефону.';
+      break;
+
+
+    case '/production/siding/assortiment/scheme.php': // это ЧПУ
+        $aSEOData['title'] = 'Ассортимент и характеристики сайдинга | Компания Vinylon';
+        $aSEOData['descr'] = 'На сайте компании Vinylon представлена наглядная схема использования сайдинга при отделке и строительстве дома. Консультация специалистов доступна по телефону.';
+      break;
+
+
+    case '/calculator2/': // это ЧПУ
+        $aSEOData['title'] = 'Калькулятор замера стен вашего дома | Компания Vinylon';
+        $aSEOData['descr'] = 'Инструмент расчета количества сайдинга для фасада дома. Введите размер и конструктивные элементы вашего дома в удобную форму и получите оптимальный расчет сайдинга онлайн. Шаг 2.';
+      break;
+
+
+    case '/calculator/step4.html': // это ЧПУ
+        $aSEOData['title'] = 'Калькулятор расчета цены на виниловый сайдинг (шаг 4) | Vinyl-On';
+        $aSEOData['descr'] = 'Предлагаем воспользоваться онлайн-калькулятором для расчета необходимого количества сайдинга. Шаг 4: ознакомьтесь с результатами расчета. Любая интересующая информация доступна по телефону.';
+      break;
+
+
+    case '/calculator/step3.html': // это ЧПУ
+        $aSEOData['title'] = 'Расчет размеров и стоимости сайдинга онлайн (шаг 3) | Компания Vinylon';
+        $aSEOData['descr'] = 'На сайте компании Vinylon размещен удобный функционал для расчета необходимого количества сайдинга. Шаг 3: введите ширину карнизного свеса — выступающей над стеной части крыши, которая будет обшиваться софитами.';
+      break;
+
+
+    case '/calculator/step2.html': // это ЧПУ
+        $aSEOData['title'] = 'Расчет стоимости сайдинга онлайн (шаг 2) | Компания Vinylon';
+        $aSEOData['descr'] = 'Предлагаем воспользоваться онлайн-калькулятором для расчета необходимого количества сайдинга. Шаг 2: добавьте окна и двери для дальнейшего моделирования дома. Консультация специалистов доступна по телефону.';
+      break;
+
+
+    case '/calculator2/step2.html': // это ЧПУ
+        $aSEOData['title'] = 'Результаты расчета необходимого количества сайдинга | Компания Vinylon';
+        $aSEOData['descr'] = 'Инструмент расчета количества сайдинга для фасада дома. Введите размер и конструктивные элементы вашего дома в удобную форму и получите оптимальный расчет сайдинга онлайн. Результат расчета.';
+      break;
+
+    case '/gallery/?&ALBUM_ID=226': // это ЧПУ
+        $aSEOData['title'] = 'MOSBUILD - Building & Interiors Exhibition / Строительство. Интерьер. | ВИНИЛ-ОН';
+      break;
+
+   /* case '/helpful/articles/?PAGEN_1=2':
+        $aSEOData['title'] = 'Статьи, страница 2';
+       break;*/
+
+
+  }
+
+    if (isset($_GET['PAGEN_1']) && $_GET['PAGEN_1']!= 1 ){
+    $aSEOData['title'] = $APPLICATION->GetPageProperty('title').	' страница '.intval($_GET['PAGEN_1']);
+  }
+
+
+    // Установка новых значений
+    if(!empty($aSEOData['title'])) $APPLICATION->SetPageProperty('title', $aSEOData['title']);
+    if(!empty($aSEOData['descr'])) $APPLICATION->SetPageProperty('description', $aSEOData['descr']);
+     if(!empty($aSEOData['h1'])) $APPLICATION->SetPageTitle($aSEOData['h1']);
+
+}
+
+?>
